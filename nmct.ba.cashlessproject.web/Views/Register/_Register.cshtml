@@ -1,0 +1,58 @@
+﻿@model List<nmct.ba.cashlessproject.model.ITBedrijf.OrganisationRegister>
+<section id="registers" class="data">
+    
+    <section class="table">
+        <ul class="header">
+
+            <li>
+                @Html.DisplayNameFor(model => model.First().RegisterID)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => model.First().RegisterName)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => model.First().RegisterDevice)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => model.First().RegisterPurchaseDate)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => model.First().RegisterExpiresDate)
+            </li>
+            <li></li>
+            <li></li>
+        </ul>
+
+
+
+
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            DateTime purchaseDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model[i].RegisterPurchaseDate);
+            DateTime expiresDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model[i].RegisterExpiresDate);
+
+            string background = "";
+            string color = "";
+            if (DateTime.Compare(expiresDate, DateTime.Now) < 0)
+            {
+                background = "rgb(202, 55, 55)";
+                    color = "white";
+              
+            }
+               
+
+            <ul class="data" style="background:@background;color:@color">
+                <li style="color:@color">@Model[i].RegisterID</li>
+                <li style="color:@color">@Model[i].RegisterName</li>
+                <li style="color:@color">@Model[i].RegisterDevice</li>
+                <li style="color:@color">@purchaseDate.ToString("MM-dd-yyyy")</li>
+                <li style="color:@color">@expiresDate.ToString("MM-dd-yyyy")</li>
+
+                <li><a style="color:@color" href="../register/delete/@Model[i].RegisterID?type=full">Delete</a></li>
+                <li><a style="color:@color" href="../register/edit/@Model[i].RegisterID?type=full">Edit</a></li>
+
+            </ul>
+        }
+        </section>
+    </section>

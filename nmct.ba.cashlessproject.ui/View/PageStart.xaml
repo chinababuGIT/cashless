@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.ui.View.PageStart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.Resources>
+        <vm:PageStartVM x:Key="PageStart"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblPaginaNaam" Style="{StaticResource label_pagina}" Content="{Binding Source={StaticResource PageStart},Path=Name}" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+        <Grid Height="200" Margin="0,20,0,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Top" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Margin="8" Grid.Row="0" Grid.Column="0" Content="Producten" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Producten" />
+                <Button Margin="8" Grid.Row="0" Grid.Column="1"  Content="Klanten" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Klanten" />
+                <Button Margin="8" Grid.Row="0" Grid.Column="2"  Content="Medewerkers" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Medewerkers" />
+
+                <Button Margin="8" Grid.Row="1" Grid.Column="0"  Content="Nieuw product" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Producten_add" />
+                <Button Margin="8" Grid.Row="1" Grid.Column="1"  Content="Nieuwe klant" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Klanten_add" />
+                <Button Margin="8" Grid.Row="1" Grid.Column="2"  Content="Nieuwe medewerker" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Medewerkers_add" />
+
+
+                <Button Margin="8" Grid.Row="2" Grid.Column="0"  Content="Profiel" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Profiel" />
+                <Button Margin="8" Grid.Row="2" Grid.Column="1"  Content="Statistieken" Command="{Binding Source={StaticResource PageStart},Path=GoCommand}" CommandParameter="Statistieken" />
+            </Grid>
+           
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

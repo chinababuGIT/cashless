@@ -1,0 +1,108 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisation
+
+@{
+    ViewBag.Title = "Aanpassen";
+}
+
+<h2>Aanpassen</h2>
+
+
+@using (Html.BeginForm("Edit", "Organisation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+        
+        @Html.HiddenFor(model=>model.OrganisationNew.ID)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Username, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Username, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Password, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Password, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.RepeatPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.RepeatPassword, "", new { @class = "text-danger" })
+                @Html.PasswordFor(model => model.OrganisationNew.RepeatPassword, new { @class = "form-control" })
+               
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.File, new { type = "file" })
+                
+            </div>
+        </div>
+
+
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Name, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Address, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Address, new { htmlAttributes = new { @class = "form-control" } })
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Email, new { htmlAttributes = new { @class = "form-control" } })
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationNew.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationNew.Phone, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationNew.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

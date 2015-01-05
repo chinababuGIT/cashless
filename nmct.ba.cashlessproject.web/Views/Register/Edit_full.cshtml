@@ -1,0 +1,94 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisationRegister
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.OrganisationID)
+        @Html.HiddenFor(model=>model.OrganisationRegisterNew.RegisterID)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.FromDate)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.UntilDate)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationRegisterNew.RegisterName, new { htmlAttributes = new { @class = "form-control" } })
+               
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterDevice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterDevice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationRegisterNew.RegisterDevice, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        @{
+            DateTime purchaseDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model.OrganisationRegisterNew.RegisterPurchaseDate);
+            DateTime expiresDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model.OrganisationRegisterNew.RegisterExpiresDate);
+         }
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterPurchaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterPurchaseDate, "", new { @class = "text-danger" })
+                <input type="date" value="@purchaseDate.ToString("yyyy-MM-dd")" id="purchaseDate" name="purchaseDate" />
+               
+
+               
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterExpiresDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterExpiresDate, "", new { @class = "text-danger" })
+                <input type="date" value="@expiresDate.ToString("yyyy-MM-dd")" id="expiresDate" name="expiresDate" />
+               
+
+
+            </div>
+        </div>
+
+
+
+        <!-- SELECTEER ORGANISATION -->
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.OrganisationID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.OrganisationID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.OrganisationID, Model.SelectOrganisation, new { htmlAttributes = new { @class = "form-control" } })
+              
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

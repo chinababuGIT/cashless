@@ -1,0 +1,92 @@
+﻿@model List<nmct.ba.cashlessproject.model.ITBedrijf.OrganisationRegister>
+
+@for (int i = 1; i < Model.Count; i++)
+{
+   <section id="registers" class="data">
+    
+       @{
+        bool canShow = false;
+        List<OrganisationRegister> registers;
+        
+                OrganisationRegister lijst = Model[i];
+                if (lijst.OrganisationID == 0)
+                {
+                    lijst = null;
+                }
+                
+               
+                string organisationName = "";
+                if (lijst!=null && Model[i].OrganisationID==Model[i-1].OrganisationID)
+                {
+                    canShow = true;
+                    organisationName = lijst.OrganisationName;
+                    registers = Model.Where(m => m.OrganisationID == lijst.OrganisationID).ToList<OrganisationRegister>();
+
+                }
+                else
+                {
+                    canShow = false;
+                    registers = null;
+                }
+               
+        }
+
+       @if (canShow)
+       {
+           
+       
+       <h1>@organisationName</h1>
+       <section class="table">
+           <ul class="header">
+               <li>
+                   @Html.DisplayNameFor(model => model.First().RegisterID)
+               </li>
+               <li>
+                   @Html.DisplayNameFor(model => model.First().RegisterName)
+               </li>
+               <li>
+                   @Html.DisplayNameFor(model => model.First().RegisterDevice)
+               </li>
+               <li>
+                   @Html.DisplayNameFor(model => model.First().FromDate)
+               </li>
+               <li>
+                   @Html.DisplayNameFor(model => model.First().UntilDate)
+               </li>
+               <li></li>
+               <li></li>
+           </ul>
+
+           @for (int i2 = 0; i2 < registers.Count; i2++)
+               {
+                   DateTime fromDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(registers[i2].FromDate);
+
+                   DateTime untilDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(registers[i2].UntilDate);
+
+
+
+                   string background = "";
+                   string color = "";
+                   if (nmct.ba.cashlessproject.web.Helper.TimeConverter.ToUnixTimeStamp(untilDate) < nmct.ba.cashlessproject.web.Helper.TimeConverter.ToUnixTimeStamp(DateTime.Now))
+                   {
+                       background = "rgb(202, 55, 55)";
+                       color = "white";
+
+                   }
+               <ul class="data" style="background:@background;color:@color">
+                   <li style="color:@color">@registers[i2].RegisterID</li>
+                   <li style="color:@color">@registers[i2].RegisterName</li>
+                   <li style="color:@color">@registers[i2].RegisterDevice</li>
+                   <li style="color:@color">@fromDate.ToString("MM-dd-yyyy")</li>
+                   <li style="color:@color">@untilDate.ToString("MM-dd-yyyy")</li>
+
+                   <li><a style="color:@color" href="/register/delete/@registers[i2].RegisterID?type=organisation">Verwijder uit organisatie</a></li>
+                   <li><a style="color:@color" href="/register/edit/@registers[i2].RegisterID?type=organisation">Edit</a></li>
+
+               </ul>
+               }
+           </section>
+       }
+       </section>
+      
+}

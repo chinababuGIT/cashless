@@ -1,0 +1,87 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisationRegister
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.RegisterID)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.OrganisationID)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.RegisterPurchaseDate)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.RegisterExpiresDate)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationRegisterNew.RegisterName, new { htmlAttributes = new { @class = "form-control" } })
+               
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.RegisterDevice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.RegisterDevice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OrganisationRegisterNew.RegisterDevice, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        @{
+    DateTime fromDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model.OrganisationRegisterNew.FromDate);
+    DateTime untilDate = nmct.ba.cashlessproject.web.Helper.TimeConverter.ToDateTime(Model.OrganisationRegisterNew.UntilDate);
+
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.FromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.FromDate, "", new { @class = "text-danger" })
+                <input type="date" value="@fromDate.ToString("yyyy-MM-dd")" id="fromDate" name="fromDate" />
+                
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganisationRegisterNew.UntilDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.OrganisationRegisterNew.UntilDate, "", new { @class = "text-danger" })
+                <input type="date" value="@untilDate.ToString("yyyy-MM-dd")" id="untilDate" name="untilDate" />
+                
+
+
+            </div>
+        </div>
+
+       
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Verwijder uit organisatie", "Delete", new { type = "organisation", id = Model.OrganisationRegisterNew.RegisterID }, new { @class = "btn btn-default" })
+
+
+                <input type="submit" value="Opslaan" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

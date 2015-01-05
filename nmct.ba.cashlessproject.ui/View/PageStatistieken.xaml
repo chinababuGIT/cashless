@@ -1,0 +1,369 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.ui.View.PageStatistieken"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+             xmlns:sparrow="http://sparrowtoolkit.codeplex.com/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.Resources>
+        <vm:PageStatistiekenVM x:Key="PageStatistieken"/>
+        <vm:StringToImageConverter x:Key="StringToImageConverter"/>
+        <vm:LongToDateTimeConverter x:Key="LongToDateTimeConverter"/>
+        <vm:ToEuroConverter x:Key="ToEuroConverter"/>
+        <vm:VisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <vm:PageStatistiekenVM/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="1*"/>
+                
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" x:Name="lblPaginaNaam" Style="{StaticResource label_pagina}" Content="{Binding Name}" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,0,0,0" HorizontalAlignment="Left" Width="340" Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding StartDate}" Width="120" FirstDayOfWeek="Monday"/>
+                <DatePicker SelectedDate="{Binding EndDate}" Width="120" FirstDayOfWeek="Monday"/>
+
+            </StackPanel>
+
+            <ComboBox  Grid.Row="0" ItemsSource="{Binding Source={StaticResource PageStatistieken},Path=Stats, UpdateSourceTrigger=Explicit}" SelectedItem="{Binding Source={StaticResource PageStatistieken},Path=SelectedID,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"  Width="200" HorizontalAlignment="Right"/>
+            <TextBlock Margin="0,50,0,0" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" Text="{Binding Source={StaticResource PageStatistieken},Path=Error,Mode=OneWay}"/>
+            <Image Margin="0,50,0,0" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" Width="50" VerticalAlignment="Stretch" HorizontalAlignment="Center" Source="{Binding LoadingImage}"/>
+
+
+            <ScrollViewer Grid.Row="1" Visibility="{Binding Source={StaticResource PageStatistieken},Path=Full,Converter={StaticResource VisibilityConverter},Mode=TwoWay}" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="3"  DockPanel.Dock="Left" VerticalScrollBarVisibility="auto" CanContentScroll="True" UseLayoutRounding="False" Padding="0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Column="0" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Tijdstip"/>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Klant"/>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Kassa"/>
+                    </Border>
+                    <Border Grid.Column="3" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Prijs"/>
+                    </Border>
+                    <Border Grid.Column="4" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Hoeveelheid"/>
+                    </Border>
+                    <Border Grid.Column="5" Style="{StaticResource data_border_top}" Grid.Row="0">
+                        <Label Content="Totale prijs"/>
+                    </Border>
+
+                    
+                    <Grid Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" VerticalAlignment="Stretch" DockPanel.Dock="Left">
+
+                        <ItemsControl ItemsSource="{Binding Sales_filter}"  >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Grid.Column="0"  Style="{StaticResource data_border}">
+                                            <Label Content="{Binding Timestamp,Converter={StaticResource LongToDateTimeConverter}}"/>
+                                        </Border>
+                                        <Border Grid.Column="1"  Style="{StaticResource data_border}">
+                                            <Label Content="{Binding CustomerName}"/>
+                                        </Border>
+                                        <Border Grid.Column="2"  Style="{StaticResource data_border}" >
+                                            <Label Content="{Binding RegisterName}"/>
+                                        </Border>
+                                        <Border Grid.Column="3" Style="{StaticResource data_border}" >
+                                            <Label Content="{Binding ProductPrice}"/>
+                                        </Border>
+                                        <Border Grid.Column="4" Style="{StaticResource data_border}" >
+                                            <Label Content="{Binding Amount}"/>
+                                        </Border>
+                                        <Border Grid.Column="5" Style="{StaticResource data_border}" >
+                                            <Label Content="{Binding TotalPrice,Converter={StaticResource ToEuroConverter}}" />
+                                        </Border>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+
+
+
+                </Grid>
+
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Row="1" Visibility="{Binding Source={StaticResource PageStatistieken},Path=ByProduct,Converter={StaticResource VisibilityConverter},Mode=TwoWay}" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="3"  DockPanel.Dock="Left" VerticalScrollBarVisibility="auto" CanContentScroll="True" UseLayoutRounding="False" Padding="0">
+
+                <Grid>
+                    
+                    
+                    
+                    <Grid VerticalAlignment="Stretch" DockPanel.Dock="Left">
+
+                        <ItemsControl ItemsSource="{Binding Sales_product_filter}"  >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel HorizontalAlignment="Left" Grid.Column="0" Orientation="Horizontal">
+                                            <Image Source="{Binding ProductPicture, Converter={StaticResource StringToImageConverter}}" MaxWidth="80" Width="auto" Stretch="Fill"/>
+                                            <Label Content="{Binding ProductName}"/>
+                                        </StackPanel>
+
+                                        <Border HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,40,0" >
+                                            <Label Content="{Binding ProductPrice,Converter={StaticResource ToEuroConverter}}"/>
+                                        </Border>
+
+                                        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Border Grid.Column="0" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Tijdstip"/>
+                                            </Border>
+                                            <Border Grid.Column="1" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Klant"/>
+                                            </Border>
+                                            <Border Grid.Column="2" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Kassa"/>
+                                            </Border>
+
+                                            <Border Grid.Column="3" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Hoeveelheid"/>
+                                            </Border>
+                                            <Border Grid.Column="4" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Totale prijs"/>
+                                            </Border>
+                                        </Grid>
+                                        
+                                        <ItemsControl Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Sales}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Border Grid.Column="0"  Style="{StaticResource data_border}">
+                                                            <Label Content="{Binding Timestamp,Converter={StaticResource LongToDateTimeConverter}}"/>
+                                                        </Border>
+                                                        <Border Grid.Column="1"  Style="{StaticResource data_border}">
+                                                            <Label Content="{Binding CustomerName}"/>
+                                                        </Border>
+                                                        <Border Grid.Column="2"  Style="{StaticResource data_border}" >
+                                                            <Label Content="{Binding RegisterName}"/>
+                                                        </Border>
+                                                        <Border Grid.Column="3" Style="{StaticResource data_border}" >
+                                                            <Label Content="{Binding Amount}"/>
+                                                        </Border>
+                                                        <Border Grid.Column="4" Style="{StaticResource data_border}" >
+                                                            <Label Content="{Binding TotalPrice,Converter={StaticResource ToEuroConverter}}" />
+                                                        </Border>
+
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+
+
+
+                </Grid>
+
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Row="1" Visibility="{Binding Source={StaticResource PageStatistieken},Path=ByRegister,Converter={StaticResource VisibilityConverter},Mode=TwoWay}" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="3"  DockPanel.Dock="Left" VerticalScrollBarVisibility="auto" CanContentScroll="True" UseLayoutRounding="False" Padding="0">
+
+                <Grid>
+                
+                <Grid VerticalAlignment="Stretch" DockPanel.Dock="Left">
+
+                    <ItemsControl ItemsSource="{Binding Sales_register_filter}"  >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        
+                                    </Grid.RowDefinitions>
+
+                                        <StackPanel HorizontalAlignment="Left" Grid.Column="0" Orientation="Horizontal">
+                                            <Label Content="{Binding RegisterName}"/>
+                                        </StackPanel>
+
+                                        <Border HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,40,0" >
+                                            <Label Content="{Binding RegisterDevice}"/>
+                                        </Border>
+                                    
+                                        
+
+                                        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Border Grid.Column="0" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Tijdstip"/>
+                                            </Border>
+                                            <Border Grid.Column="1" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Klant"/>
+                                            </Border>
+                                            <Border Grid.Column="2" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Kassa"/>
+                                            </Border>
+
+                                            <Border Grid.Column="3" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Hoeveelheid"/>
+                                            </Border>
+                                            <Border Grid.Column="4" Style="{StaticResource data_border_top}" Grid.Row="0">
+                                                <Label Content="Totale prijs"/>
+                                            </Border>
+                                        </Grid>
+                                        <ItemsControl Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Sales}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Border Grid.Column="0"  Style="{StaticResource data_border}">
+                                                        <Label Content="{Binding ProductName }"/>
+                                                    </Border>
+                                                    <Border Grid.Column="1"  Style="{StaticResource data_border}">
+                                                        <Label Content="{Binding CustomerName}"/>
+                                                    </Border>
+                                                    <Border Grid.Column="2"  Style="{StaticResource data_border}" >
+                                                        <Label Content="{Binding RegisterName}"/>
+                                                    </Border>
+                                                    <Border Grid.Column="3" Style="{StaticResource data_border}" >
+                                                        <Label Content="{Binding Amount}"/>
+                                                    </Border>
+                                                    <Border Grid.Column="4" Style="{StaticResource data_border}" >
+                                                        <Label Content="{Binding TotalPrice,Converter={StaticResource ToEuroConverter}}" />
+                                                    </Border>
+
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+
+
+            </Grid>
+            </ScrollViewer>
+            <!--<sparrow:SparrowChart Grid.Column="1" Grid.Row="4">
+                <sparrow:SparrowChart.DataContext>
+                    <vm:PageStatistiekenVM/>
+                </sparrow:SparrowChart.DataContext>
+                <sparrow:SparrowChart.Resources>
+                    <vm:PageStatistiekenVM x:Key="stat"/>
+                </sparrow:SparrowChart.Resources>
+
+                <sparrow:SparrowChart.XAxis>
+                    <sparrow:LinearXAxis>
+                    </sparrow:LinearXAxis>
+                </sparrow:SparrowChart.XAxis>
+
+
+                <sparrow:SparrowChart.YAxis>
+                    <sparrow:LinearYAxis MinValue="0"/>
+                </sparrow:SparrowChart.YAxis>
+
+                <sparrow:ColumnSeries Foreground="Blue" x:Name="chart" PointsSource="{Binding Source={StaticResource stat},Path=Graph}" XPath="X" YPath="Y"/>
+            </sparrow:SparrowChart>-->
+
+
+            <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1" Command="{Binding Source={StaticResource PageStatistieken},Path=ExportCommand}" Width="200" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Exporteer naar excel" Height="40" />
+
+
+        </Grid>
+        </Grid>
+</UserControl>

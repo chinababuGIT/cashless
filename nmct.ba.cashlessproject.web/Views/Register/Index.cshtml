@@ -1,0 +1,36 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisationRegister
+
+@{
+    ViewBag.Title = "Kassa's";
+}
+
+   <section id="full">
+    <h2>Kassa's</h2>
+    @Html.ActionLink("Nieuwe kassa", "New", null, new { @class = "right btn btn-default" })
+    </section>
+    @if (ViewBag.old == false)
+    {
+        @Html.ActionLink("Oude kassa's", "old", null, new { })
+    }
+    else
+    {
+        @Html.ActionLink("Alle kassa's", "old", null, new { })
+    }
+    @Html.ActionLink("Clear", "Index")
+
+    @Html.Partial("_Register", Model.Registers)
+
+    
+    <section id="organisation">
+    <h4>Kassa's per organisaties</h4>
+    @if (Model.Organisations != null)
+    {
+        @Html.Partial("_Organisation", Model.Registers)
+    }
+    </section>
+    <h4>Beschikbare kassa's</h4>
+
+    <section id="empty">
+        @Html.Partial("_Register", Model.EmptyRegisters)
+    </section>
+    

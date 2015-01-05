@@ -1,0 +1,72 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisation
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+    <section id="organisations" class="data">
+        <h2>Verenigingen</h2>
+        @Html.ActionLink("Nieuwe vereniging", "New", null, new {@class="right btn btn-default"})
+
+        <section class="table">
+            <ul class="header">
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.ID)
+                </li>
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Name)
+                </li>
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Logo)
+                </li>
+
+
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Address)
+                </li>
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Email)
+                </li>
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Phone)
+                </li>
+                <li>
+                    @Html.DisplayNameFor(model => model.OrganisationNew.Username)
+                </li>
+                <li></li>
+                <li></li>
+            </ul>
+            @for (int i = 1; i < Model.Organisations.Count; i++)
+            {
+                var imgSrc = "";
+                if (Model.Organisations[i].Logo != null && Model.Organisations[i].Logo.Count()!=0)
+                {
+                    var base64 = Convert.ToBase64String(Model.Organisations[i].Logo);
+                    imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                }
+                else
+                {
+                    imgSrc = "";
+                }
+
+
+                <ul class="data">
+                    <li>@Model.Organisations[i].ID</li>
+                    <li>@Model.Organisations[i].Name</li>
+                    <li><img src="@imgSrc" /></li>
+                    <li>@Model.Organisations[i].Address</li>
+                    <li>@Model.Organisations[i].Email</li>
+                    <li>@Model.Organisations[i].Phone</li>
+                    <li>@Model.Organisations[i].Username</li>
+                    <li><a class="edit" href="../organisation/edit/@Model.Organisations[i].ID">Edit</a></li>
+                    <li><a class="details" href="../organisation/details/@Model.Organisations[i].ID">Details</a></li>
+
+
+                </ul>
+            }
+        </section>
+
+    </section>

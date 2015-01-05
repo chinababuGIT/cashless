@@ -1,0 +1,120 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.ui.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cashless" Height="600" Width="800"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.View"
+        xmlns:cmd="clrnamespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" >
+    <Window.DataContext>
+        <vm:ApplicationVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <vm:StringToImageConverter x:Key="StringToImageConverter"/>
+        <vm:GridLengthConverter x:Key="gridLenghtConverter"/>
+        <vm:ThicknessConverter x:Key="ThicknessConverter"/>
+       
+        <DataTemplate DataType="{x:Type vm:PageKassasVM}">
+            <v:PageKassas/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:PageKlantenVM}">
+            <v:PageKlanten/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageKlantenVM_add}">
+            <v:PageKlanten_add/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageKlantenVM_edit}">
+            <v:PageKlanten_edit/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageMedewerkersVM}">
+            <v:PageMedewerkers/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageMedewerkersVM_add}">
+            <v:PageMedewerkers_add/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageMedewerkersVM_edit}">
+            <v:PageMedewerkers_edit/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageProductenVM}">
+            <v:PageProducten/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageProductenVM_edit}">
+            <v:PageProducten_edit/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageProductenVM_add}">
+            <v:PageProducten_add/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageProfielVM}">
+            <v:PageProfiel/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageStartVM}">
+            <v:PageStart/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageStatistiekenVM}">
+            <v:PageStatistieken/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PageLoginVM}">
+            <v:PageLogin/>
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid Background="{StaticResource background}">
+           <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="{Binding NavigationWidth, 
+                                  Mode=TwoWay,
+                                  Converter={StaticResource gridLenghtConverter}}" MinWidth="{Binding NavigationMinWidth}" MaxWidth="250" />
+
+            <ColumnDefinition Width="3*"/>
+
+        </Grid.ColumnDefinitions>
+        <ScrollViewer DockPanel.Dock="Left" VerticalScrollBarVisibility="auto" CanContentScroll="True" UseLayoutRounding="False" Padding="0">
+            <StackPanel ScrollViewer.VerticalScrollBarVisibility="Auto" Background="{StaticResource Blue}"  Orientation="Vertical">
+
+                <Button Style="{StaticResource logo}" Grid.Column="0">
+                    <Image Source="/nmct.ba.cashlessproject.ui;component/Themes/images/logo.png" />
+                </Button>
+
+
+
+                <ItemsControl ItemsSource="{Binding Pages}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" Style="{StaticResource menu_button}" BorderThickness="{Binding Selected, Converter={StaticResource ThicknessConverter}}" >
+                                <Grid Margin="0,6,0,0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Margin="15,0,0,0" Grid.Column="0" VerticalAlignment="Top" Height="30" Source="{Binding Image}"/>
+                                    <Label Style="{StaticResource menu_label}" Height="35" Grid.Column="1" Content="{Binding Name}"/>
+                                </Grid>
+                            </Button>
+                            
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+
+                <Button Margin="25,10,0,0" Style="{StaticResource menu_button}" Command="{Binding ChangePasswordCommand}" Content="Wachtwoord wijzigen" Padding="1,1,10,1" Grid.Column="0" VerticalContentAlignment="Center"/>
+
+                <Button Margin="25,0,0,0" Style="{StaticResource menu_button}" Command="{Binding LogOffCommand}" Content="Afmelden" Padding="1,1,10,1" Grid.Column="0" VerticalContentAlignment="Center"/>
+
+
+
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Grid Grid.Column="1">
+            <ContentControl x:Name="main" Content="{Binding CurrentPage}"/>
+        </Grid>
+        
+        
+
+    </Grid>
+</Window>

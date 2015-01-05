@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46DE68F5-8E9F-4DB3-AFB3-A5CC7B93E29E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nmct.ba.cashlessproject.ui</RootNamespace>
+    <AssemblyName>nmct.ba.cashlessproject.ui</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>coins2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="beid35libCS">
+      <HintPath>..\..\beid35libCS.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sparrow.Chart.Wpf.40">
+      <HintPath>..\packages\Sparrow.Chart.Wpf.13.1.0.118\lib\net40\Sparrow.Chart.Wpf.40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityModel.Client">
+      <HintPath>..\packages\Thinktecture.IdentityModel.Client.3.0.0\lib\portable-net45+wp80+win8+wpa81\Thinktecture.IdentityModel.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WorldDomination.HttpClient.Helpers">
+      <HintPath>..\packages\WorldDomination.HttpClient.Helpers.2.0\lib\net45\WorldDomination.HttpClient.Helpers.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Helper\EIDReader.cs" />
+    <Compile Include="ViewModel\ApplicationVM.cs" />
+    <Compile Include="ViewModel\Converters\GridLengthConverter.cs" />
+    <Compile Include="ViewModel\Converters\ToEuroConverter.cs" />
+    <Compile Include="ViewModel\Converters\LongToDateTimeConverter.cs" />
+    <Compile Include="ViewModel\Converters\VisibilityConverter.cs" />
+    <Compile Include="ViewModel\PageKlantenVM_add.cs" />
+    <Compile Include="ViewModel\PageKlantenVM_edit.cs" />
+    <Compile Include="ViewModel\PageMedewerkersVM_add.cs" />
+    <Compile Include="ViewModel\PageMedewerkersVM_edit.cs" />
+    <Compile Include="ViewModel\PageProductenVM_add.cs" />
+    <Compile Include="ViewModel\PageProductenVM_edit.cs" />
+    <Compile Include="ViewModel\Converters\StringToImageConverter.cs" />
+    <Compile Include="ViewModel\Converters\ThicknessConverter.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageKassas.xaml.cs">
+      <DependentUpon>PageKassas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageKlanten.xaml.cs">
+      <DependentUpon>PageKlanten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageKlanten_add.xaml.cs">
+      <DependentUpon>PageKlanten_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageKlanten_edit.xaml.cs">
+      <DependentUpon>PageKlanten_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageLogin.xaml.cs">
+      <DependentUpon>PageLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMedewerkers.xaml.cs">
+      <DependentUpon>PageMedewerkers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMedewerkers_add.xaml.cs">
+      <DependentUpon>PageMedewerkers_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMedewerkers_edit.xaml.cs">
+      <DependentUpon>PageMedewerkers_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageProducten.xaml.cs">
+      <DependentUpon>PageProducten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageProducten_add.xaml.cs">
+      <DependentUpon>PageProducten_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageProducten_edit.xaml.cs">
+      <DependentUpon>PageProducten_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageProfiel.xaml.cs">
+      <DependentUpon>PageProfiel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageStart.xaml.cs">
+      <DependentUpon>PageStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageStatistieken.xaml.cs">
+      <DependentUpon>PageStatistieken.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Themes\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\IPage.cs" />
+    <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="ViewModel\PageKassasVM.cs" />
+    <Compile Include="ViewModel\PageKlantenVM.cs" />
+    <Compile Include="ViewModel\PageLoginVM.cs" />
+    <Compile Include="ViewModel\PageMedewerkersVM.cs" />
+    <Compile Include="ViewModel\PageProductenVM.cs" />
+    <Compile Include="ViewModel\PageProfielVM.cs" />
+    <Compile Include="ViewModel\PageStartVM.cs" />
+    <Compile Include="ViewModel\PageStatistiekenVM.cs" />
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageKassas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageKlanten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageKlanten_add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageKlanten_edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMedewerkers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMedewerkers_add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMedewerkers_edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageProducten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageProducten_add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageProducten_edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageProfiel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageStart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageStatistieken.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Themes\fonts\Raleway-Bold.otf" />
+    <Resource Include="Themes\fonts\Raleway-Light.otf" />
+    <Resource Include="Themes\fonts\Raleway-Regular.otf" />
+    <Resource Include="Themes\fonts\Raleway-Thin.otf" />
+    <Resource Include="Themes\fonts\Raleway-SemiBold.otf" />
+    <Resource Include="Themes\fonts\Raleway-Medium.otf" />
+    <Resource Include="Themes\fonts\Raleway-Heavy.otf" />
+    <Resource Include="Themes\fonts\Raleway-ExtraLight.otf" />
+    <Resource Include="Themes\fonts\Raleway-ExtraBold.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nmct.ba.cashlessproject.helper\nmct.ba.cashlessproject.helper.csproj">
+      <Project>{a8431959-6f0a-4422-9f23-3b4ee68ee484}</Project>
+      <Name>nmct.ba.cashlessproject.helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\nmct.ba.cashlessproject.model\nmct.ba.cashlessproject.model.csproj">
+      <Project>{251080b4-ee15-435a-9da4-7f700b600f6b}</Project>
+      <Name>nmct.ba.cashlessproject.model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\customer.png" />
+    <Resource Include="Themes\images\employee.png" />
+    <Resource Include="Themes\images\home.png" />
+    <Resource Include="Themes\images\product.png" />
+    <Resource Include="Themes\images\register.png" />
+    <Resource Include="Themes\images\stat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="coins2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\load.png" />
+    <Resource Include="Themes\images\min.png" />
+    <Resource Include="Themes\images\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\images\empty.png" />
+    <Resource Include="Themes\images\error.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

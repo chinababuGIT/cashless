@@ -1,0 +1,20 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMRegisterLog
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    $('[class=options]').val(@Model.RegisterLogNew.RegisterID);
+</script>
+
+
+<section id="logs" class="data">
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownListFor(model => model.RegisterLogNew.RegisterID, Model.SelectRegister, new { onchange = "this.form.submit();", @class="options" })
+    }
+    <br />
+    @Html.Partial("_Logs",Model)
+
+</section>

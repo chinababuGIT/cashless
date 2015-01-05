@@ -1,0 +1,180 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
+    background:#f5f7f8;
+}
+ul, ol, li {
+text-align: left;
+margin: 0px;
+padding: 0px;
+text-decoration: none;
+list-style-type: none;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+padding-left: 15px;
+padding-right: 15px;
+margin-top: 30px;
+}
+hr {
+margin-top: 10px;
+margin-bottom: 20px;
+border: 0;
+border-top: 1px solid rgba(110, 110, 110, 0.14);
+}
+.table{
+    margin-top:0px !important;
+}
+.navbar{
+     background-color: #36495b;
+     height:80px;
+     border-color:none;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color:white;
+    font-weight:200;
+    font-size:1.1em;
+    text-transform:uppercase;
+}
+.navbar-inverse .navbar-brand{
+    color:white;
+     font-weight:600;
+    font-size:2.6em;
+}
+.navbar .container {
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+height: 80px;
+padding-top: 15px;
+}
+.navbar-collapse{
+    background:#36495b;
+    border-color: transparent !important;
+}
+h2, .h2{
+    text-transform:uppercase;
+     font-weight:300;
+
+}
+section {
+float: left;
+position: relative;
+width:100%;
+}
+section h1 {
+font-size: 1.3em;
+}
+.btn-default {
+color: white;
+background-color: #343f4b;
+border-color: rgba(255, 255, 255, 0.69);
+border-radius: 0;
+line-height: 2;
+margin-bottom: 10px;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+color: white;
+background-color: rgba(52, 63, 75, 0.75);
+border-color: white;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+.navbar-inverse .navbar-toggle {
+border-color: transparent;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus,.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus,.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+background-color: none !important;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.right{
+    float:right;
+}
+/*headers*/
+section h2 {
+float: left;
+margin-top: 5px;
+}
+section:first-child{
+     margin-top:40px;
+     width:100%;
+     float:left;
+     position:relative;
+}
+section.data {
+float: left;
+position: relative;
+margin-bottom:30px;
+width:100%;
+}
+
+.data section {
+display: table;
+width: 100%;
+float:left;
+position:relative;
+}
+.data ul.header{
+    background: white;
+    font-size: 1.2em;
+    display: table-header-group;
+}
+ul.data{
+    background:rgb(239, 239, 239);
+    display: table-row-group;
+}
+.data ul.header, .data ul.data {
+width: 100%;
+font-weight:200;
+}
+
+.data ul.data li{
+font-size: 1em;
+overflow:hidden;
+font-weight:200;
+}
+.data ul.header li,.data ul.data li{
+text-decoration: none;
+color: black;
+padding: 15px 13px 15px 13px;
+margin-right: 10px;
+font-weight: 400;
+display: table-cell;
+width: auto;
+text-align: left;
+}
+
+
+
+
+section.start a {
+width: calc( 100% - 100px);
+margin-left: 50px;
+margin-right: 50px;
+}
+.big{
+    font-size:1.3em;
+    font-weight:100;
+    line-height:6em;
+}

@@ -1,0 +1,37 @@
+﻿@model nmct.ba.cashlessproject.web.PresentationModels.PMOrganisationRegister
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.RegisterID)
+        @Html.HiddenFor(model => model.OrganisationRegisterNew.OrganisationID)
+
+        <div class="form-group">
+            <h3>Ben u zeker om @Model.OrganisationRegisterNew.RegisterName.ToString() te verwijderen?</h3>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                 @Html.ActionLink("Annuleer", "Edit", @Model.OrganisationRegisterNew.RegisterID.ToString(), new { @class = "btn btn-default" })
+                <input type="submit" value="Verwijder" class="btn btn-default" />
+            </div>
+        </div>
+       
+
+    </div>
+}
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
