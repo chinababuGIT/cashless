@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.cashlessproject.ui.kassa.medewerkers\obj\Debug\
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.ui.kassa.medewerkers\obj\Debug\
 nmct.ba.cashlessproject.ui.kassa
 none
 false
 DEBUG;TRACE
-C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.cashlessproject.ui.kassa.medewerkers\App.xaml
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.ui.kassa.medewerkers\App.xaml
 6187056520
 
 21-678335801
-781229032396
+781305621782
 Themes\Theme.xaml;View\MainWindow.xaml;View\PageKassa.xaml;View\PageKassa_klant.xaml;View\PageKassa_klant_add.xaml;View\PageStart.xaml;
 
 False

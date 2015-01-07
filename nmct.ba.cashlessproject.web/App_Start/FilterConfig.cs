@@ -7,7 +7,7 @@ namespace nmct.ba.cashlessproject.web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute() { View = "Error" });
         }
     }
 }

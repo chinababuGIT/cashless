@@ -1,6 +1,8 @@
 ﻿@model List<nmct.ba.cashlessproject.model.ITBedrijf.OrganisationRegister>
-
-@for (int i = 1; i < Model.Count; i++)
+@{
+    List<OrganisationRegister> nieuweLijst = new List<OrganisationRegister>();
+}
+@for (int i = 0; i < Model.Count; i++)
 {
    <section id="registers" class="data">
     
@@ -16,8 +18,12 @@
                 
                
                 string organisationName = "";
-                if (lijst!=null && Model[i].OrganisationID==Model[i-1].OrganisationID)
+
+                var ok=nieuweLijst.Where(r=>r.OrganisationID==lijst.OrganisationID).ToList<OrganisationRegister>();
+                
+                if (lijst != null && ok.Count==0 )
                 {
+                    nieuweLijst.Add(lijst);
                     canShow = true;
                     organisationName = lijst.OrganisationName;
                     registers = Model.Where(m => m.OrganisationID == lijst.OrganisationID).ToList<OrganisationRegister>();
@@ -28,6 +34,8 @@
                     canShow = false;
                     registers = null;
                 }
+                
+              
                
         }
 

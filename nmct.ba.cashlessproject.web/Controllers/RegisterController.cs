@@ -246,6 +246,7 @@ namespace nmct.ba.cashlessproject.web.Controllers
         private static bool GetCookieValue(HttpCookie cookie)
         {
             bool old = false;
+            if (cookie == null) return false;
             if (Convert.ToInt32(cookie.Value) == 0)
             {
                

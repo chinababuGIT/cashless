@@ -28,7 +28,13 @@ namespace nmct.ba.cashlessproject.web.Controllers
                     
                     pm.RegisterLogs = pm.RegisterLogs.Where(m => m.RegisterID == kassa).ToList<RegisterLog>();
                 }
+                
                 return View(pm);
+            }
+            else
+            {
+                throw new Exception("Kassa id is niet correct!");
+
             }
             return RedirectToRoute("Home");
         }

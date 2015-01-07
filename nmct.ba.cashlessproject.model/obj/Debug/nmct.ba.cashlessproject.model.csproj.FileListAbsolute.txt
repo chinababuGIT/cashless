@@ -2,3 +2,8 @@ C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.
 C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.cashlessproject.model\bin\Debug\nmct.ba.cashlessproject.model.pdb
 C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.dll
 C:\Users\stijnvanhulle\Downloads\PaymentSystem_2014-12-17\PaymentSystem\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.pdb
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.model\bin\Debug\nmct.ba.cashlessproject.model.dll
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.model\bin\Debug\nmct.ba.cashlessproject.model.pdb
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.csprojResolveAssemblyReference.cache
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.dll
+C:\Users\stijnvanhulle\Downloads\cashless\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.pdb
